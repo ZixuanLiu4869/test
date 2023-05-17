@@ -8,12 +8,7 @@ import secrets
 
 
 # curl -X POST -F "image=@Desktop/yolo_data/test/images/240_F_1192541_cGmwbG3iNBTHZjOCznx78nxbG4jNgL_jpg.rf.ffaa1d90739b21198c04e86e3c4f5968.jpg" http://localhost:5000/object_detection/yolov5m
-BLOB_CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=raspb4;AccountKey=0sCl0TFMLKLaBhkDRwlBcvvj4Sj8akvS8c4qBxy/f7c0yeiOR+6trsXy5RQglYjQS9FiBGo2Ozhc+ASt1RYmCw==;EndpointSuffix=core.windows.net"
-BLOB_CONTAINER_NAME = "rasp4"
-BLOB_STORAGE_ACCOUNT = "raspb4"
 model = torch.hub.load("ultralytics/yolov5", "custom", path="best.pt", force_reload=True)
-blob_service_client = BlobServiceClient.from_connection_string(BLOB_CONNECTION_STRING)
-container_client = blob_service_client.get_container_client(BLOB_CONTAINER_NAME)
 
 app = Flask(__name__, static_folder='.', static_url_path='')
 
